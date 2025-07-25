@@ -1,188 +1,161 @@
 /* Styles dasar */
 body {
-    /* mengatur font yang digunakan */
     font-family: Arial, sans-serif;
-    /* mengatur margin dan padding */
     margin: 0;
     padding: 20px;
-    /* mengatur warna background */
     background-color: #f5f5f5;
-    /* mengatur align teks ke tengah */
     text-align: center;
 }
 
 .upload-container {
-    /* mengatur lebar maksimal */
     max-width: 800px;
-    /* mengatur margin dan padding */
     margin: 0 auto;
     padding: 20px;
-    /* mengatur warna background */
     background: white;
-    /* mengatur border-radius untuk membuat sudut menjadi bulat */
     border-radius: 10px;
-    /* mengatur box-shadow untuk membuat efek bayangan */
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
 .btn {
-    /* mengatur display untuk membuat tombol menjadi inline-flex */
     display: inline-flex;
-    /* mengatur align-items untuk membuat teks di tengah */
     align-items: center;
-    /* mengatur gap untuk membuat jarak antara teks dan icon */
     gap: 8px;
-    /* mengatur padding untuk membuat tombol lebih besar */
     padding: 12px 20px;
-    /* mengatur border untuk menghapus border default */
     border: none;
-    /* mengatur border-radius untuk membuat sudut menjadi bulat */
     border-radius: 5px;
-    /* mengatur background-color untuk membuat warna background */
     background-color: #4CAF50;
-    /* mengatur color untuk membuat warna teks */
     color: white;
-    /* mengatur font-size untuk membuat ukuran teks */
     font-size: 16px;
-    /* mengatur cursor untuk membuat kursor menjadi pointer */
     cursor: pointer;
-    /* mengatur margin-top untuk membuat jarak antara tombol dan atas */
     margin-top: 20px;
 }
 
-/* Styles untuk preview */
-.preview-container {
-    /* mengatur display untuk membuat grid */
-    display: grid;
-    /* mengatur grid-template-columns untuk membuat kolom */
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-    /* mengatur gap untuk membuat jarak antara gambar */
-    gap: 15px;
-    /* mengatur margin-top untuk membuat jarak antara preview dan atas */
-    margin-top: 20px;
+.preview-item {
+    margin-bottom: 20px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .preview-image {
-    /* mengatur width untuk membuat lebar gambar */
+    display: block;
+    margin: 20px auto 0 auto;
+    max-width: 400px;
     width: 100%;
-    /* mengatur height untuk membuat tinggi gambar */
-    height: 150px;
-    /* mengatur object-fit untuk membuat gambar menjadi cover */
-    object-fit: cover;
-    /* mengatur border-radius untuk membuat sudut menjadi bulat */
-    border-radius: 5px;
+    height: auto;
+    border: 2px solid #4CAF50;
+    border-radius: 8px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+}
+
+/* Container Utama */
+.prediction-result {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    /* border-left: 5px solid #4a90e2; */
+}
+
+/* Judul Penyakit */
+.prediction-result h3 {
+    color: #2c3e50;
+    font-size: 1.8em;
+    margin-bottom: 15px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid #eee;
+    letter-spacing: 0.5px;
+}
+
+/* Sub-judul Informasi */
+.prediction-result strong {
+    color: #e74c3c;
+    font-size: 1.1em;
+}
+
+/* Teks Penjelasan dan Penanganan */
+.prediction-result p {
+    background-color: #f0f7ff;
+    padding: 12px;
+    border-radius: 6px;
+    border-left: 3px solid #4a90e2;
 }
 
 /* Styles untuk modal */
 .modal {
-    /* mengatur display untuk membuat modal menjadi none */
     display: none;
-    /* mengatur position untuk membuat modal menjadi fixed */
     position: fixed;
-    /* mengatur top dan left untuk membuat modal menjadi full screen */
     top: 0;
     left: 0;
-    /* mengatur width dan height untuk membuat modal menjadi full screen */
     width: 100%;
     height: 100%;
-    /* mengatur background-color untuk membuat warna background */
     background-color: rgba(0, 0, 0, 0.8);
-    /* mengatur z-index untuk membuat modal menjadi di atas */
     z-index: 1000;
-    /* mengatur justify-content dan align-items untuk membuat modal menjadi center */
     justify-content: center;
     align-items: center;
 }
 
 .modal-content {
-    /* mengatur background-color untuk membuat warna background */
     background: white;
-    /* mengatur padding untuk membuat modal menjadi lebih besar */
     padding: 20px;
-    /* mengatur border-radius untuk membuat sudut menjadi bulat */
     border-radius: 10px;
-    /* mengatur width dan max-width untuk membuat modal menjadi responsive */
     width: 90%;
     max-width: 500px;
-    /* mengatur position untuk membuat modal menjadi relative */
     position: relative;
 }
 
 .close {
-    /* mengatur position untuk membuat close button menjadi absolute */
     position: absolute;
-    /* mengatur top dan right untuk membuat close button menjadi di atas kanan */
     top: 10px;
     right: 15px;
-    /* mengatur font-size untuk membuat ukuran teks */
     font-size: 28px;
-    /* mengatur font-weight untuk membuat teks menjadi bold */
     font-weight: bold;
-    /* mengatur cursor untuk membuat kursor menjadi pointer */
     cursor: pointer;
 }
 
 /* Styles untuk camera */
 .camera-container {
-    /* mengatur width untuk membuat lebar camera */
     width: 100%;
-    /* mengatur margin untuk membuat jarak antara camera dan atas */
     margin: 15px 0;
-    /* mengatur position untuk membuat camera menjadi relative */
     position: relative;
-    /* mengatur background-color untuk membuat warna background */
     background: #000;
-    /* mengatur border-radius untuk membuat sudut menjadi bulat */
     border-radius: 5px;
-    /* mengatur overflow untuk membuat camera menjadi hidden */
     overflow: hidden;
 }
 
 #video {
-    /* mengatur width untuk membuat lebar video */
     width: 100%;
-    /* mengatur max-height untuk membuat tinggi video */
     max-height: 60vh;
-    /* mengatur display untuk membuat video menjadi block */
     display: block;
 }
 
 #canvas {
-    /* mengatur width untuk membuat lebar canvas */
     width: 100%;
-    /* mengatur max-height untuk membuat tinggi canvas */
     max-height: 60vh;
-    /* mengatur display untuk membuat canvas menjadi none */
     display: none;
 }
 
 .camera-controls {
-    /* mengatur display untuk membuat kontrol camera menjadi flex */
     display: flex;
-    /* mengatur justify-content untuk membuat kontrol camera menjadi center */
     justify-content: center;
-    /* mengatur gap untuk membuat jarak antara tombol */
     gap: 10px;
-    /* mengatur margin-top untuk membuat jarak antara kontrol camera dan atas */
     margin-top: 15px;
 }
 
 /* Responsive */
 @media (max-width: 600px) {
     .button-group {
-        /* mengatur flex-direction untuk membuat tombol menjadi column */
         flex-direction: column;
     }
     
     .btn {
-        /* mengatur width untuk membuat tombol menjadi full width */
         width: 100%;
-        /* mengatur justify-content untuk membuat tombol menjadi center */
         justify-content: center;
     }
     
     .preview-container {
-        /* mengatur grid-template-columns untuk membuat kolom */
         grid-template-columns: repeat(2, 1fr);
     }
 }

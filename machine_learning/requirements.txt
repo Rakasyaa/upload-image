@@ -1,0 +1,18 @@
+# Ensure you have Python 3.11 installed and available in your PATH
+# If you need to create a virtual environment, use:
+# py -3.11 -m venv venv
+# Activate it with:
+# .\venv\Scripts\Activate
+# Then install the required packages using:
+# Usage: pip install -r machine_learning/requirements.txt
+# use python main.py to run the application
+
+Flask>=3.0.3
+numpy>=1.26.4
+tensorflow>=2.15.0
+gunicorn>=22.0.0
+Werkzeug>=3.0.3
+opencv-python>=4.10.0.82
+flask-cors>=3.0.10
+pillow>=10.4.0
+keras>=3.0.3

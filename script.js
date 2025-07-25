@@ -160,54 +160,54 @@ $(document).ready(function() {
             $(this).val('');
         }
     });
-// Fungsi upload file (tanpa error handling)
+
 function uploadFile(file) {
     const formData = new FormData();
     formData.append('photo', file);
 
-    $.ajax({
-        url: 'upload.php',
-        type: 'POST',
-        data: formData,
-        processData: false,
-        contentType: false,
-        dataType: 'json',
-        success: function(data) {
-            const reader = new FileReader();
-            reader.onload = function(e) {
-                const img = $('<img>', {
-                    src: e.target.result,
-                    class: 'preview-image',
-                    alt: 'Uploaded'
-                });
-                const previewItem = $('<div>', { class: 'preview-item' });
-                previewItem.append(img);
-                preview.prepend(previewItem);
-            };
-            reader.readAsDataURL(file);
-        }
-    });
+    const reader = new FileReader();
+    reader.onload = function(e) {
+        const img = $('<img>', {
+            src: e.target.result,
+            class: 'preview-image',
+            alt: 'Uploaded'
+        });
+        const predictionText = $('<div>', {
+            class: 'prediction-result',
+            text: 'Memprediksi...'
+        });
+        const previewItem = $('<div>', { class: 'preview-item' });
+        previewItem.append(img).append(predictionText);
+        preview.prepend(previewItem);
+
+        // Segera kirim gambar ke Flask
+        $.ajax({
+            url: 'http://localhost:8080/predict',
+            type: 'POST',
+            data: formData,
+            processData: false,
+            contentType: false,
+            dataType: 'json',
+            success: function(data) {
+                // alert("Hasil Prediksi: " + data.prediction.prediction);
+                console.log(data); // debug
+                if (data && data.prediction && data.prediction.nama_penyakit) {
+                    predictionText.html(`
+                        <h3>Hasil Prediksi: ${data.prediction.nama_penyakit}</h3>
+                        <p><strong>Penjelasan:</strong> ${data.prediction.penjelasan}</p>
+                        <p><strong>Penanganan:</strong> ${data.prediction.penanganan}</p>
+                    `);
+                } else {
+                    predictionText.text('Gagal memprediksi: ' + (data.message || 'Response invalid'));
+                }
+            },
+            error: function(error) {
+                console.error("Error:", error);
+                predictionText.text('Error: ' + error);
+            }
+        });
+    };
+    reader.readAsDataURL(file);
 }
 
-// Fungsi load image (tanpa error handling)
-function loadImages() {
-    $.ajax({
-        url: 'get_images.php',
-        type: 'GET',
-        dataType: 'json',
-        success: function(data) {
-            preview.empty();
-            data.images.forEach(function(image) {
-                const img = new Image();
-                img.src = image;
-                img.className = 'preview-image';
-                img.alt = 'Uploaded';
-                preview.append(img);
-            });
-        }
-    });
-}
-
-    // Initial load of existing images
-    loadImages();
 });
